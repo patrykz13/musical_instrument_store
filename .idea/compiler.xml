@@ -7,10 +7,12 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="musical_instrument_store" />
+        <module name="phone_store" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="1.8">
       <module name="musical_instrument_store" target="1.8" />
+      <module name="phone_store" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

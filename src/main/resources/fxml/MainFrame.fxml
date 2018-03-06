@@ -1,14 +1,249 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.instrumentStore.controller.MainFrameController"
-            prefHeight="400.0" prefWidth="600.0">
-
-</AnchorPane>
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="850.0" prefWidth="1282.0" styleClass="backgroundContainer" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.instrumentStore.controller.MainFrameController">
+   <children>
+      <HBox alignment="CENTER" prefHeight="58.0" prefWidth="1338.0" style="-fx-background-color: grey; -fx-border-width: 1; -fx-border-color: #000;" styleClass="backgroundContainer" stylesheets="@../css/style.css">
+         <children>
+            <VBox alignment="TOP_RIGHT" prefHeight="56.0" prefWidth="429.0" />
+            <VBox alignment="TOP_RIGHT" prefHeight="85.0" prefWidth="833.0">
+               <children>
+                  <VBox prefHeight="32.0" prefWidth="757.0">
+                     <children>
+                        <Label fx:id="labelTitle" prefHeight="56.0" prefWidth="744.0" text="%main.label.title" textFill="#f5f4f4">
+                           <font>
+                              <Font size="39.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </VBox>
+               </children>
+            </VBox>
+            <VBox prefHeight="56.0" prefWidth="438.0">
+               <children>
+                  <HBox alignment="TOP_RIGHT" prefHeight="56.0" prefWidth="1018.0">
+                     <children>
+                        <Region prefHeight="56.0" prefWidth="70.0" />
+                        <ImageView fx:id="germanFlag" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/Germany.png" />
+                           </image>
+                        </ImageView>
+                        <Region prefHeight="24.0" prefWidth="31.0" />
+                        <ImageView fx:id="britishFlag" fitHeight="48.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                               <Image url="@../images/england.png" />
+                           </image>
+                        </ImageView>
+                        <Region prefHeight="24.0" prefWidth="31.0" />
+                        <ImageView fx:id="polishFlag" fitHeight="50.0" fitWidth="51.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/poland.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+      <HBox prefHeight="797.0" prefWidth="1282.0">
+         <children>
+            <VBox prefHeight="755.0" prefWidth="43.0" />
+            <VBox prefHeight="785.0" prefWidth="593.0">
+               <children>
+                  <TableView fx:id="tableViewPhone" prefHeight="583.0" prefWidth="499.0">
+                    <columns>
+                      <TableColumn fx:id="tableColumnProducent" prefWidth="125.0" text="%main.column.producent" />
+                      <TableColumn fx:id="tableColumnModel" prefWidth="107.0" text="%main.column.model" />
+                        <TableColumn fx:id="TableColumnMemory" prefWidth="115.0" text="%main.column.memory" />
+                        <TableColumn fx:id="tableColumnDateOfProduction" prefWidth="120.0" text="%main.column.productionDate" />
+                        <TableColumn fx:id="tableColumnPrice" prefWidth="141.0" text="%main.column.price" />
+                    </columns>
+                  </TableView>
+                  <HBox prefHeight="77.0" prefWidth="583.0" />
+                  <HBox prefHeight="67.0" prefWidth="583.0">
+                     <children>
+                        <Button fx:id="buttonLoad" mnemonicParsing="false" onAction="#buttonLoad_onAction" prefHeight="53.0" prefWidth="380.0" text="%main.button.load" />
+                        <Region prefHeight="83.0" prefWidth="125.0" />
+                        <Button fx:id="buttonSave" mnemonicParsing="false" onAction="#buttonSave_onAction" prefHeight="60.0" prefWidth="389.0" text="%main.button.save" />
+                     </children>
+                  </HBox>
+                  <Region prefHeight="34.0" prefWidth="583.0" />
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Button fx:id="buttonDelete" alignment="CENTER" mnemonicParsing="false" onAction="#buttonDelete_onAction" prefHeight="57.0" prefWidth="327.0" text="%main.button.delete" />
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+            <VBox prefHeight="755.0" prefWidth="30.0" />
+            <VBox prefHeight="756.0" prefWidth="634.0">
+               <children>
+                  <HBox prefHeight="357.0" prefWidth="586.0">
+                     <children>
+                        <VBox prefHeight="353.0" prefWidth="659.0" style="-fx-border-color: white;">
+                           <children>
+                              <HBox alignment="CENTER" prefHeight="58.0" prefWidth="646.0" style="-fx-border-color: white;">
+                                 <children>
+                                    <Label fx:id="labelDisplayPanel" text="%main.label.show" textFill="WHITE">
+                                       <font>
+                                          <Font size="32.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                              <HBox prefHeight="294.0" prefWidth="644.0">
+                                 <children>
+                                    <VBox prefHeight="455.0" prefWidth="643.0" style="-fx-border-color: white;">
+                                       <children>
+                                          <Region prefHeight="21.0" prefWidth="586.0" />
+                                          <HBox prefHeight="37.0" prefWidth="586.0">
+                                             <children>
+                                                <Label fx:id="labelProductProducent" alignment="TOP_LEFT" contentDisplay="CENTER" prefHeight="65.0" prefWidth="192.0" text="%main.column.producent" textFill="WHITE" />
+                                                <Label fx:id="labelProductProducentEmpty" alignment="TOP_RIGHT" prefHeight="21.0" prefWidth="139.0" text="---" textFill="#fffefe" />
+                                             </children>
+                                          </HBox>
+                                          <Region prefHeight="26.0" prefWidth="586.0" />
+                                          <HBox prefHeight="37.0" prefWidth="586.0">
+                                             <children>
+                                                <Label fx:id="labelProductModel" alignment="TOP_LEFT" contentDisplay="BOTTOM" prefHeight="65.0" prefWidth="192.0" text="%main.column.model" textFill="WHITE" />
+                                                <Label fx:id="labelProductModelEmpty" alignment="TOP_RIGHT" prefHeight="21.0" prefWidth="139.0" text="---" textFill="#fcf8f8" />
+                                             </children>
+                                          </HBox>
+                                          <Region prefHeight="26.0" prefWidth="586.0" />
+                                          <HBox prefHeight="37.0" prefWidth="586.0">
+                                             <children>
+                                                <Label fx:id="labelProductAmount" alignment="TOP_LEFT" prefHeight="65.0" prefWidth="192.0" text="%main.column.amount" textFill="WHITE" />
+                                                <Label fx:id="labelProductAmountEmpty" alignment="TOP_RIGHT" prefHeight="21.0" prefWidth="139.0" text="---" textFill="#fffbfb" />
+                                             </children>
+                                          </HBox>
+                                          <Region prefHeight="26.0" prefWidth="586.0" />
+                                          <HBox prefHeight="37.0" prefWidth="586.0">
+                                             <children>
+                                                <Label fx:id="labelProductDateOfProduction" alignment="TOP_LEFT" prefHeight="65.0" prefWidth="192.0" text="%main.column.productionDate" textFill="WHITE" />
+                                                <Label fx:id="labelProductDateOfProductionEmpty" alignment="TOP_RIGHT" prefHeight="21.0" prefWidth="139.0" text="---" textFill="#fffefe" />
+                                             </children>
+                                          </HBox>
+                                          <Region prefHeight="26.0" prefWidth="586.0" />
+                                          <HBox prefHeight="37.0" prefWidth="586.0">
+                                             <children>
+                                                <Label fx:id="labelProductMemory" alignment="TOP_LEFT" prefHeight="65.0" prefWidth="192.0" text="%main.column.memory" textFill="WHITE" />
+                                                <Label fx:id="labelProductMemoryEmpty" alignment="TOP_RIGHT" prefHeight="21.0" prefWidth="139.0" text="---" textFill="#f8f7f7" />
+                                             </children>
+                                          </HBox>
+                                          <Region prefHeight="26.0" prefWidth="586.0" />
+                                          <HBox prefHeight="37.0" prefWidth="586.0">
+                                             <children>
+                                                <Label fx:id="labelProductPrice" alignment="TOP_LEFT" prefHeight="65.0" prefWidth="192.0" text="%main.column.price" textFill="#fcf7f7" />
+                                                <Label fx:id="labelProductPriceEmpty" alignment="TOP_RIGHT" prefHeight="21.0" prefWidth="139.0" text="---" textFill="#fcfafa" />
+                                             </children>
+                                          </HBox>
+                                          <Region prefHeight="26.0" prefWidth="586.0" />
+                                          <HBox alignment="CENTER" prefHeight="37.0" prefWidth="586.0">
+                                             <children>
+                                                <Button fx:id="buttonProductsStatistics" mnemonicParsing="false" onAction="#buttonShowStatistics_onAction" prefHeight="31.0" prefWidth="235.0" text="%main.button.showStats" />
+                                             </children>
+                                          </HBox>
+                                          <Region prefHeight="23.0" prefWidth="328.0" />
+                                       </children>
+                                    </VBox>
+                                    <VBox alignment="CENTER" prefHeight="294.0" prefWidth="612.0">
+                                       <children>
+                                          <ImageView fx:id="imageViewProductPhoto" fitHeight="270.0" fitWidth="317.0" pickOnBounds="true" preserveRatio="true" style="fx-border-color: white;">
+                                             <image>
+                                                <Image url="@../images/x.png" />
+                                             </image>
+                                          </ImageView>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                     </children></HBox>
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="630.0" style="-fx-border-color: white;">
+                     <children>
+                        <Label fx:id="labelAddingPanel" text="%main.label.addPhone" textFill="WHITE">
+                           <font>
+                              <Font size="32.0" />
+                           </font></Label>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="344.0" prefWidth="586.0">
+                     <children>
+                        <VBox prefHeight="383.0" prefWidth="630.0" style="-fx-border-color: white;">
+                           <children>
+                              <Region prefHeight="21.0" prefWidth="586.0" />
+                              <HBox prefHeight="37.0" prefWidth="586.0">
+                                 <children>
+                                    <Label fx:id="labelProducent" alignment="CENTER" contentDisplay="CENTER" prefHeight="65.0" prefWidth="192.0" text="%main.column.producent" textFill="WHITE" />
+                                    <TextField fx:id="textFieldProducent" prefHeight="37.0" prefWidth="322.0" />
+                                 </children>
+                              </HBox>
+                              <Region prefHeight="26.0" prefWidth="586.0" />
+                              <HBox prefHeight="37.0" prefWidth="586.0">
+                                 <children>
+                                    <Label fx:id="labelModel" alignment="CENTER" contentDisplay="BOTTOM" prefHeight="65.0" prefWidth="192.0" text="%main.column.model" textFill="WHITE" />
+                                    <TextField fx:id="textFieldModel" prefHeight="37.0" prefWidth="322.0" />
+                                 </children>
+                              </HBox>
+                              <Region prefHeight="26.0" prefWidth="586.0" />
+                              <HBox prefHeight="37.0" prefWidth="586.0">
+                                 <children>
+                                    <Label fx:id="labelAmount" alignment="CENTER" contentDisplay="BOTTOM" prefHeight="65.0" prefWidth="192.0" text="%main.column.amount" textFill="WHITE" />
+                                    <TextField fx:id="textFieldAmount" prefHeight="37.0" prefWidth="322.0" />
+                                 </children>
+                              </HBox>
+                              <Region prefHeight="26.0" prefWidth="586.0" />
+                              <HBox prefHeight="37.0" prefWidth="586.0">
+                                 <children>
+                                    <Label fx:id="labelMemory" alignment="CENTER" prefHeight="65.0" prefWidth="192.0" text="%main.column.memory" textFill="WHITE" />
+                                    <TextField fx:id="textFieldMemory" prefHeight="37.0" prefWidth="322.0" />
+                                 </children>
+                              </HBox>
+                              <Region prefHeight="26.0" prefWidth="586.0" />
+                              <HBox prefHeight="37.0" prefWidth="586.0">
+                                 <children>
+                                    <Label alignment="CENTER" prefHeight="65.0" prefWidth="192.0" text="%main.column.productionDate" textFill="WHITE" />
+                                    <DatePicker fx:id="textFieldDateOfProduction" />
+                                 </children>
+                              </HBox>
+                              <Region prefHeight="26.0" prefWidth="586.0" />
+                              <HBox prefHeight="37.0" prefWidth="586.0">
+                                 <children>
+                                    <Label fx:id="labelPrice" alignment="CENTER" prefHeight="65.0" prefWidth="192.0" text="%main.column.price" textFill="#fcf7f7" />
+                                    <TextField fx:id="textFieldPrice" prefHeight="37.0" prefWidth="322.0" />
+                                 </children>
+                              </HBox>
+                              <Region prefHeight="26.0" prefWidth="586.0" />
+                              <HBox prefHeight="37.0" prefWidth="586.0">
+                                 <children>
+                                    <Label fx:id="labelFilePath" alignment="CENTER" prefHeight="65.0" prefWidth="192.0" text="%main.label.filePath" textFill="#fcf7f7" />
+                                    <Button fx:id="buttonFilePath" mnemonicParsing="false" onAction="#buttonChoosePhotoPath_onAction" prefHeight="31.0" prefWidth="187.0" text="%main.button.filePath" />
+                                 </children>
+                              </HBox>
+                              <Region prefHeight="26.0" prefWidth="586.0" />
+                              <HBox alignment="CENTER" prefHeight="37.0" prefWidth="586.0">
+                                 <children>
+                                    <Button fx:id="buttonAdd" mnemonicParsing="false" onAction="#buttonAdd_onAction" text="%main.button.add" />
+                                 </children>
+                              </HBox>
+                              <Region prefHeight="41.0" prefWidth="628.0" />
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+   </children>
+</VBox>

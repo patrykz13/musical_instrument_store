@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/musical_instrument_store.iml" filepath="$PROJECT_DIR$/musical_instrument_store.iml" />
+      <module fileurl="file://$PROJECT_DIR$/phone_store.iml" filepath="$PROJECT_DIR$/phone_store.iml" />
     </modules>
   </component>
 </project>
