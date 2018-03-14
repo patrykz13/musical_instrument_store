@@ -7,6 +7,7 @@ import com.instrumentStore.store.Warehouse;
 import com.instrumentStore.store.XmlParser;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -24,11 +25,10 @@ import javafx.stage.Stage;
 import org.springframework.stereotype.Controller;
 import java.io.File;
 import java.io.IOException;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.net.URL;
-import java.text.DateFormat;
-import java.text.NumberFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
+import java.text.*;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Date;
@@ -79,7 +79,8 @@ public class MainFrameController implements Initializable {
     @FXML TableColumn<Phone,Integer>TableColumnMemory;
     @FXML TableColumn<Phone,Date>tableColumnDateOfProduction;
     @FXML TableColumn<Phone,Double>tableColumnPrice;
-    //private ObservableList<Phone> phoneObservableList = FXCollections.observableArrayList();
+    @FXML TableColumn<Phone,Integer>tableColumnAmount;
+    private ObservableList<Phone> phoneObservableList = FXCollections.observableArrayList();
     private Phone phone;
     private Warehouse warehouse;
     private String filePath;
@@ -89,11 +90,13 @@ public class MainFrameController implements Initializable {
     private static NumberFormat numberFormatter;
     private ResourceBundle resourceBundle;
     private CustomMessageBox customMessageBox;
+    DecimalFormat df = new DecimalFormat("#.##");
 
 
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        tableViewPhone.setItems(phoneObservableList);
         customMessageBox = new CustomMessageBox();
         resourceBundle = resources;
         this.tableColumnProducent.setCellValueFactory(new PropertyValueFactory<>("producent"));
@@ -101,6 +104,8 @@ public class MainFrameController implements Initializable {
         this.tableColumnDateOfProduction.setCellValueFactory(new PropertyValueFactory<>("dateOfProduction"));
         this.tableColumnPrice.setCellValueFactory(new PropertyValueFactory<>("price"));
         this.TableColumnMemory.setCellValueFactory(new PropertyValueFactory<>("memory"));
+        this.tableColumnAmount.setCellValueFactory(new PropertyValueFactory<>("amount"));
+
 
         currentLocale=resources.getLocale();
        // numberFormatter.setCurrency(new Currency(currentLocale.getCountry()));
@@ -110,6 +115,12 @@ public class MainFrameController implements Initializable {
             @Override
             public void handle(MouseEvent event) {
                 numberFormatter = NumberFormat.getCurrencyInstance(Locale.GERMANY);
+                if(warehouse!=null){
+                    for(int i=0;i<warehouse.getListOfPhones().size();i++){
+                        warehouse.getItemFromListOfPhones(i).setPrice(round(warehouse.getItemFromListOfPhones(i).getPrice()*Double.valueOf(resourceBundle.getString("currency.exchange.rate")),2));
+                    }
+                }
+
                 init("de");
                 event.consume();
             }
@@ -120,6 +131,11 @@ public class MainFrameController implements Initializable {
             @Override
             public void handle(MouseEvent event) {
                 numberFormatter = NumberFormat.getCurrencyInstance(new Locale("en","US"));
+                if(warehouse!=null){
+                    for(int i=0;i<warehouse.getListOfPhones().size();i++){
+                        warehouse.getItemFromListOfPhones(i).setPrice(round(warehouse.getItemFromListOfPhones(i).getPrice()*Double.valueOf(resourceBundle.getString("currency.exchange.rate")),2));
+                    }
+                }
                 init("en");
                 event.consume();
             }
@@ -130,6 +146,11 @@ public class MainFrameController implements Initializable {
             @Override
             public void handle(MouseEvent event) {
                 numberFormatter = NumberFormat.getCurrencyInstance(new Locale("pl","PL"));
+                if(warehouse!=null){
+                    for(int i=0;i<warehouse.getListOfPhones().size();i++){
+                        warehouse.getItemFromListOfPhones(i).setPrice(round(warehouse.getItemFromListOfPhones(i).getPrice()*Double.valueOf(resourceBundle.getString("currency.exchange.rate")),2));
+                    }
+                }
                 init("pl");
                 event.consume();
             }
@@ -187,11 +208,10 @@ public class MainFrameController implements Initializable {
 
     private void fillTableViewAfterGUIReload(Warehouse warehouse) {
         this.warehouse = warehouse;
-        //System.out.println(warehouse.getItemFromListOfPhones(0).getProducent());
         if (warehouse != null){
-            ObservableList<Phone> data = tableViewPhone.getItems();
             for(int i=0;i<warehouse.getListOfPhones().size();i++){
-                data.add( warehouse.getItemFromListOfPhones(i));
+                warehouse.getItemFromListOfPhones(i).setPrice(round(warehouse.getItemFromListOfPhones(i).getPrice()/Double.valueOf(resourceBundle.getString("currency.exchange.rate")),2));
+                phoneObservableList.add( warehouse.getItemFromListOfPhones(i));
             }
         }
     }
@@ -199,7 +219,7 @@ public class MainFrameController implements Initializable {
     @FXML
     void buttonChoosePhotoPath_onAction() {
         FileChooser fc = new FileChooser();
-        fc.setInitialDirectory(new File("C:\\Users\\Patryk Zdral\\IdeaProjects\\phone_store"));
+        fc.setInitialDirectory(new File("C:\\Users\\Patryk Zdral\\IdeaProjects\\phone_store\\src\\main\\resources\\images\\phones"));
         File selectedFile = fc.showOpenDialog(null);
         if (selectedFile != null) {
             filePath = selectedFile.toString();
@@ -215,10 +235,10 @@ public class MainFrameController implements Initializable {
         if(selectedFile !=null){
             xmlPath = selectedFile.toString();
             XmlParser x = new XmlParser();
-            ObservableList<Phone> data = tableViewPhone.getItems();
-            Warehouse warehouse = x.readFromXMLFile(xmlPath);
+            //ObservableList<Phone> data = tableViewPhone.getItems();
+            warehouse = x.readFromXMLFile(xmlPath);
             for(int i=0;i<warehouse.getListOfPhones().size();i++){
-               data.add( warehouse.getItemFromListOfPhones(i));
+                phoneObservableList.add( warehouse.getItemFromListOfPhones(i));
             }
             //phoneObservableList.addAll(warehouse.getListOfPhones());
 
@@ -236,13 +256,30 @@ public class MainFrameController implements Initializable {
 
     @FXML
     void buttonShowStatistics_onAction() {
+        try {
 
+
+                FXMLLoader loader = new FXMLLoader();
+             loader.setLocation(getClass().getClassLoader().getResource("fxml/Statistics.fxml"));
+            ResourceBundle resourceBundle = ResourceBundle.getBundle("bundles.messages");
+            loader.setResources(resourceBundle);
+                Parent root1 = loader.load();
+                Stage stage = new Stage();
+                stage.setScene(new Scene(root1));
+                StatisticsController controller  = loader.getController();
+                controller.init(warehouse,numberFormatter);
+                stage.show();
+
+
+        } catch (IOException ioEcx) {
+            Logger.getLogger(InitApplicationController.class.getName()).log(Level.SEVERE, null, ioEcx);
+
+        }
     }
 
     @FXML
     void buttonAdd_onAction() {
         try{
-            ObservableList<Phone> data = tableViewPhone.getItems();
             SimpleDateFormat firstDateFormat = new SimpleDateFormat("yyyy-MM-dd");
             LocalDate localDate = textFieldDateOfProduction.getValue();
             Date date = Date.from(localDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
@@ -250,9 +287,7 @@ public class MainFrameController implements Initializable {
                 warehouse = new Warehouse();
             Phone phone = new Phone(textFieldProducent.getText(),textFieldModel.getText(),filePath.toString(),Integer.parseInt(textFieldMemory.getText()),date,Integer.parseInt(textFieldAmount.getText()),Double.parseDouble(textFieldPrice.getText()));
             warehouse.addToListOfPhones(phone);
-
-
-            data.add(phone);
+            phoneObservableList.add(phone);
 
         }catch (Exception e) {
             customMessageBox.showMessageBox(Alert.AlertType.WARNING, resourceBundle.getString("alert.warning.title"), resourceBundle.getString("alert.warning.header.add_phone"), resourceBundle.getString("alert.warning.context.add_phone")).showAndWait();
@@ -262,13 +297,27 @@ public class MainFrameController implements Initializable {
 
     @FXML
     void buttonDelete_onAction() {
-        if(tableViewPhone.getSelectionModel().getSelectedItem()!=null){
-            tableViewPhone.getItems().remove((tableViewPhone.getSelectionModel().getSelectedItem()));
-            warehouse.getListOfPhones().remove((tableViewPhone.getSelectionModel().getSelectedItem()));
+        Phone selectedGame = tableViewPhone.getSelectionModel().getSelectedItem();
+        if(selectedGame!=null){
+            warehouse.remove(selectedGame);
+            phoneObservableList.remove(selectedGame);
         }
     }
 
     public void setLocale(NumberFormat numberFormat) {
+        if(numberFormat==null){
+            System.out.println("CHUJJSJDJSJS");
+        }
         this.numberFormatter = numberFormat;
     }
+
+    private static Double round(Double value, int places) {
+        if (places < 0) throw new IllegalArgumentException();
+
+        BigDecimal bd = new BigDecimal(Double.toString(value));
+        bd = bd.setScale(places, RoundingMode.HALF_UP);
+        return bd.doubleValue();
+    }
+
+
 }

@@ -32,7 +32,7 @@ public class InitApplicationController  implements Initializable{
     public ImageView germanFlag;
     public ImageView britishFlag;
     public ImageView polishFlag;
-    NumberFormat numberFormatter;
+    private NumberFormat numberFormatter;
 
     @FXML
     private void buttonLoadApplication_onAction() {
@@ -49,6 +49,7 @@ public class InitApplicationController  implements Initializable{
             stage.setTitle(resourceBundle.getString("application.title"));
             Scene scene = new Scene(parent);
             stage.setScene(scene);
+            stage.centerOnScreen();
         } catch (IOException ioEcx) {
             Logger.getLogger(MainFrameController.class.getName()).log(Level.SEVERE, null, ioEcx);
         }
@@ -61,8 +62,8 @@ public class InitApplicationController  implements Initializable{
 
             @Override
             public void handle(MouseEvent event) {
-                init("de");
                 numberFormatter = NumberFormat.getCurrencyInstance(new Locale("de","DE"));
+                init("de",numberFormatter);
                 event.consume();
             }
         });
@@ -71,8 +72,8 @@ public class InitApplicationController  implements Initializable{
 
             @Override
             public void handle(MouseEvent event) {
-                init("en");
                 numberFormatter = NumberFormat.getCurrencyInstance(new Locale("en","US"));
+                init("en",numberFormatter);
                 event.consume();
             }
         });
@@ -82,13 +83,13 @@ public class InitApplicationController  implements Initializable{
             @Override
             public void handle(MouseEvent event) {
                 numberFormatter = NumberFormat.getCurrencyInstance(new Locale("pl","PL"));
-                init("pl");
+                init("pl",numberFormatter);
                 event.consume();
             }
         });
     }
 
-    void init(String string) {
+    void init(String string, NumberFormat numberFormat) {
         try {
 
             Locale.setDefault(new Locale(string));
@@ -97,11 +98,13 @@ public class InitApplicationController  implements Initializable{
             loader.setLocation(getClass().getResource("/fxml/InitApplication.fxml"));
             loader.setResources(bundle);
             loader.load();
-
+            InitApplicationController initApplicationController =loader.getController();
+            initApplicationController.setLocale(numberFormat);
             Parent parent = loader.getRoot();
             Stage stage = ManagerApp.getMainStage();
             stage.setScene(new Scene(parent));
             stage.setTitle(bundle.getString("application.title"));
+            stage.centerOnScreen();
 
 
         } catch (IOException ioEcx) {

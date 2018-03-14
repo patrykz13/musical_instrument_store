@@ -36,9 +36,9 @@
                      </image>
                   </ImageView>
                   <Region prefHeight="24.0" prefWidth="31.0" />
-                  <ImageView fx:id="britishFlag" fitHeight="48.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="britishFlag" fitHeight="43.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../images/england.png" />
+                        <Image url="@../images/usa.png" />
                      </image>
                   </ImageView>
                   <Region prefHeight="24.0" prefWidth="31.0" />

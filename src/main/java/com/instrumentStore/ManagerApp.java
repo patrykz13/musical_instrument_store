@@ -38,7 +38,8 @@ public class ManagerApp extends Application {
             Parent root = loader.getRoot();
             primaryStage.setTitle(bundle.getString("application.title"));
             primaryStage.setScene(new Scene(root, 600, 150));
-            primaryStage.getIcons().add(new Image("/images/tone.png"));
+            primaryStage.getIcons().add(new Image("/images/phone.png"));
+            primaryStage.centerOnScreen();
 
 
             primaryStage.show();

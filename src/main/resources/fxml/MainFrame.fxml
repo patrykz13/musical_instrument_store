@@ -37,9 +37,9 @@
                            </image>
                         </ImageView>
                         <Region prefHeight="24.0" prefWidth="31.0" />
-                        <ImageView fx:id="britishFlag" fitHeight="48.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="britishFlag" fitHeight="46.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                               <Image url="@../images/england.png" />
+                               <Image url="@../images/usa.png" />
                            </image>
                         </ImageView>
                         <Region prefHeight="24.0" prefWidth="31.0" />
@@ -61,11 +61,12 @@
                <children>
                   <TableView fx:id="tableViewPhone" prefHeight="583.0" prefWidth="499.0">
                     <columns>
-                      <TableColumn fx:id="tableColumnProducent" prefWidth="125.0" text="%main.column.producent" />
-                      <TableColumn fx:id="tableColumnModel" prefWidth="107.0" text="%main.column.model" />
-                        <TableColumn fx:id="TableColumnMemory" prefWidth="115.0" text="%main.column.memory" />
-                        <TableColumn fx:id="tableColumnDateOfProduction" prefWidth="120.0" text="%main.column.productionDate" />
-                        <TableColumn fx:id="tableColumnPrice" prefWidth="141.0" text="%main.column.price" />
+                      <TableColumn fx:id="tableColumnProducent" prefWidth="92.0" text="%main.column.producent" />
+                      <TableColumn fx:id="tableColumnModel" prefWidth="99.0" text="%main.column.model" />
+                        <TableColumn fx:id="TableColumnMemory" prefWidth="82.0" text="%main.column.memory" />
+                        <TableColumn fx:id="tableColumnDateOfProduction" prefWidth="117.0" text="%main.column.productionDate" />
+                        <TableColumn fx:id="tableColumnPrice" prefWidth="93.0" text="%main.column.price" />
+                        <TableColumn fx:id="tableColumnAmount" prefWidth="104.0" text="%main.column.amount" />
                     </columns>
                   </TableView>
                   <HBox prefHeight="77.0" prefWidth="583.0" />

@@ -22,7 +22,6 @@ public class Phone {
     @XmlAttribute(name="amount")
     private Integer amount;
 
-
     @XmlAttribute(name="date_of_production")
     private Date dateOfProduction;
 

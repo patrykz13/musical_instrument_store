@@ -36,6 +36,9 @@ public class Warehouse {
     public Phone getItemFromListOfPhones(int id){
         return (Phone) listOfPhones.get(id);
     }
+    public void remove(Phone phone){
+        listOfPhones.remove(phone);
+    }
 
 
 
