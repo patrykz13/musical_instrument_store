@@ -1,10 +1,10 @@
-package com.instrumentStore.controller;
+package com.phoneStore.controller;
 
-import com.instrumentStore.CustomMessageBox;
-import com.instrumentStore.ManagerApp;
-import com.instrumentStore.store.Phone;
-import com.instrumentStore.store.Warehouse;
-import com.instrumentStore.store.XmlParser;
+import com.phoneStore.CustomMessageBox;
+import com.phoneStore.ManagerApp;
+import com.phoneStore.store.Phone;
+import com.phoneStore.store.Warehouse;
+import com.phoneStore.store.XmlParser;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -22,7 +22,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-import org.springframework.stereotype.Controller;
 import java.io.File;
 import java.io.IOException;
 import java.math.BigDecimal;
@@ -37,7 +36,6 @@ import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-@Controller
 public class MainFrameController implements Initializable {
     @FXML
     public TextField textFieldAmount;

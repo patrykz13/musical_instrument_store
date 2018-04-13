@@ -8,7 +8,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="850.0" prefWidth="1282.0" styleClass="backgroundContainer" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.instrumentStore.controller.MainFrameController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="850.0" prefWidth="1282.0" styleClass="backgroundContainer" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.phoneStore.controller.MainFrameController">
    <children>
       <HBox alignment="CENTER" prefHeight="58.0" prefWidth="1338.0" style="-fx-background-color: grey; -fx-border-width: 1; -fx-border-color: #000;" styleClass="backgroundContainer" stylesheets="@../css/style.css">
          <children>

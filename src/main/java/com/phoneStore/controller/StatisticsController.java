@@ -1,22 +1,17 @@
-package com.instrumentStore.controller;
+package com.phoneStore.controller;
 
 import com.ibm.icu.text.PluralRules;
-import com.instrumentStore.ManagerApp;
-import com.instrumentStore.store.Phone;
-import com.instrumentStore.store.Warehouse;
-import javafx.event.EventHandler;
-import javafx.fxml.FXML;
+import com.phoneStore.ManagerApp;
+import com.phoneStore.store.Phone;
+import com.phoneStore.store.Warehouse;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
-import org.springframework.stereotype.Controller;
 
-import java.awt.*;
 import java.io.IOException;
 import java.net.URL;
 import java.text.MessageFormat;
@@ -27,7 +22,6 @@ import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-@Controller
 public class StatisticsController implements Initializable {
     public Label labelPhones;
     public Label labelbytes;

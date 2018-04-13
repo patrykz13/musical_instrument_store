@@ -22,13 +22,6 @@
 
     <dependencies>
 
-    <!-- https://mvnrepository.com/artifact/org.springframework/spring-webmvc -->
-    <dependency>
-        <groupId>org.springframework</groupId>
-        <artifactId>spring-webmvc</artifactId>
-        <version>5.0.4.RELEASE</version>
-    </dependency>
-
     <!-- https://mvnrepository.com/artifact/javax.xml/jaxb-api -->
     <dependency>
         <groupId>javax.xml</groupId>

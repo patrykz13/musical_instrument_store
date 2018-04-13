@@ -1,4 +1,4 @@
-package com.instrumentStore.store;
+package com.phoneStore.store;
 
 import javax.xml.bind.annotation.*;
 import java.util.LinkedList;

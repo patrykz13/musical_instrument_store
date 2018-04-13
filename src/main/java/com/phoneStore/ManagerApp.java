@@ -1,15 +1,12 @@
-package com.instrumentStore;
+package com.phoneStore;
 
-import com.instrumentStore.controller.InitApplicationController;
-import com.instrumentStore.controller.MainFrameController;
+import com.phoneStore.controller.InitApplicationController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
-import org.springframework.stereotype.Controller;
-
 import java.io.IOException;
 import java.text.NumberFormat;
 import java.util.Locale;
@@ -17,13 +14,13 @@ import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-@Controller
 public class ManagerApp extends Application {
     private static Stage mainStage;
     NumberFormat numberFormat;
     @Override
     public void start(Stage primaryStage) {
         try {
+
             Locale.setDefault(new Locale("en", "US"));
             numberFormat = NumberFormat.getCurrencyInstance(new Locale("en", "US"));
             setMainStage(primaryStage);

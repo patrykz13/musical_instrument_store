@@ -1,4 +1,4 @@
-package com.instrumentStore.store;
+package com.phoneStore.store;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
@@ -18,7 +18,7 @@ public class XmlParser {
      * <p>function reading from xml file</p>
      *
      * @param path a {@link String} object.
-     * @return a {@link com.instrumentStore.store.Warehouse} object.
+     * @return a {@link com.phoneStore.store.Warehouse} object.
      */
     public Warehouse readFromXMLFile(String path){
         File file = new File(path);
@@ -37,7 +37,7 @@ public class XmlParser {
     /**
      * <p>function saving to xml file.</p>
      *
-     * @param warehouse a {@link com.instrumentStore.store.Warehouse} object.} object.
+     * @param warehouse a {@link com.phoneStore.store.Warehouse} object.} object.
      * @param p a {@link String} object.
      */
     public void saveToXMLFile(Warehouse warehouse,String p){
